@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  base: './', // Ensures assets are loaded with relative paths on GitHub Pages
 })

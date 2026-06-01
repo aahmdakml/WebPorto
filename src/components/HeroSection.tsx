@@ -217,24 +217,11 @@ export default function HeroSection() {
                   border: "2px dashed rgba(0,229,255,0.25)",
                 }}
               >
-                {/* Placeholder state — replace with <img> when you have your photo */}
-                <div className="flex flex-col items-center gap-3 text-center px-6">
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ background: "rgba(0,229,255,0.10)", border: "1px solid rgba(0,229,255,0.2)" }}
-                  >
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="8" r="4" stroke="#00E5FF" strokeWidth="1.5" />
-                      <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#00E5FF" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <p style={{ fontSize: 12, color: "rgba(0,229,255,0.7)", fontFamily: "'JetBrains Mono', monospace" }}>
-                    Your Photo Here
-                  </p>
-                  <p style={{ fontSize: 10, color: "rgba(230,232,235,0.3)", fontFamily: "'JetBrains Mono', monospace" }}>
-                    /public/assets/avatar.png
-                  </p>
-                </div>
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
 
               {/* Tags floating around the photo */}

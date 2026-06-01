@@ -57,8 +57,8 @@ export const profile = {
   phone: "+62-812-8395-6235",
   linkedin: "https://www.linkedin.com/in/ahmad-akmal-defatra-152482271/",
   github: "https://github.com/aahmdakml",
-  cv: "src\public\assets\CV_Ahmad_Akmal_Defatra.pdf",
-  avatar: "/assets/foto.png",
+  cv: "./assets/CV_Ahmad_Akmal_Defatra.pdf",
+  avatar: "./assets/foto.png",
   gpa: "3.44",
   university: "Institut Teknologi Sepuluh Nopember (ITS)",
 };
@@ -180,7 +180,7 @@ export const projects = [
     year: "2026",
     category: "fullstack" as ProjectCategory,
     status: "ongoing",
-    image: "/assets/project_erp.png",
+    image: "./assets/project_erp.png",
     description:
       "A custom ERP for a UMKM rice milling operation, built from field insights. Manages procurement, inventory, and finance.",
     highlights: [
@@ -198,7 +198,7 @@ export const projects = [
     year: "2026",
     category: "iot" as ProjectCategory,
     status: "ongoing",
-    image: "/assets/project_irrigation.png",
+    image: "./assets/project_irrigation.png",
     description:
       "An IoT-driven Alternate Wetting & Drying (AWD) irrigation DSS combining field sensing, weather APIs, and ML recommendations.",
     highlights: [
@@ -216,7 +216,7 @@ export const projects = [
     year: "2026",
     category: "iot" as ProjectCategory,
     status: "ongoing",
-    image: "/assets/project_solar_robot.png",
+    image: "./assets/project_solar_robot.png",
     description:
       "Embedded firmware for an industrial remote-controlled solar panel cleaning robot, focusing on motor precision and safety constraints.",
     highlights: [
@@ -234,7 +234,7 @@ export const projects = [
     year: "2025",
     category: "ai" as ProjectCategory,
     status: "completed",
-    image: "/assets/project_digital_twin.png",
+    image: "./assets/project_digital_twin.png",
     description:
       "A Proof-of-Concept digital twin for PLTA Dieng. Used Reinforcement Learning and geospatial UI for scenario simulations.",
     highlights: [
@@ -252,7 +252,7 @@ export const projects = [
     year: "2026",
     category: "fullstack" as ProjectCategory,
     status: "completed",
-    image: "/assets/project_hris.png",
+    image: "./assets/project_hris.png",
     description:
       "Contributed Flutter modules to an enterprise HRIS (Auth, Leave, Assets, Workflow), serving hundreds of daily active employees.",
     highlights: [
@@ -270,7 +270,7 @@ export const projects = [
     year: "2025",
     category: "iot" as ProjectCategory,
     status: "completed",
-    image: "/assets/project_irrigation.png",
+    image: "./assets/project_irrigation.png",
     description:
       "Soil-condition monitoring PoC via ESP32 & Raspberry Pi. Features MQTT telemetry, an RF decision model, and real-time dashboarding.",
     highlights: [
@@ -288,7 +288,7 @@ export const projects = [
     year: "2025",
     category: "ai" as ProjectCategory,
     status: "completed",
-    image: "/assets/project_erp.png",
+    image: "./assets/project_erp.png",
     description:
       "B2B analytics platform for rice market tracking. Features Python scraping, Gemini LLM sentiment analysis, and formatted reporting.",
     highlights: [
@@ -306,7 +306,7 @@ export const projects = [
     year: "2025",
     category: "iot" as ProjectCategory,
     status: "completed",
-    image: "/assets/project_solar_robot.png",
+    image: "./assets/project_solar_robot.png",
     description:
       "A dual-mode robotic vehicle with autonomous navigation and BLE override, utilizing 'Smart Reverse' for intelligent obstacle evasion.",
     highlights: [
