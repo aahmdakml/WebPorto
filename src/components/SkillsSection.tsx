@@ -13,27 +13,16 @@ const groups = [
   { label: "Domain Knowledge",    items: skills.domain },
 ];
 
-const topSkills = [
-  { name: "ESP32 / STM32",       pct: 90 },
-  { name: "C / C++",             pct: 85 },
-  { name: "React / Next.js",     pct: 80 },
-  { name: "Python",              pct: 82 },
-  { name: "MQTT / IoT Protocol", pct: 88 },
-  { name: "PostgreSQL",          pct: 78 },
+const coreSkills = [
+  "ESP32 / STM32",
+  "C / C++",
+  "React / Next.js",
+  "Python",
+  "MQTT / IoT Protocol",
+  "PostgreSQL",
+  "TypeScript",
+  "Tailwind CSS"
 ];
-
-function ProgressBar({ pct, inView }: { pct: number; inView: boolean }) {
-  return (
-    <div className="progress-track">
-      <motion.div
-        className="progress-fill"
-        initial={{ width: 0 }}
-        animate={inView ? { width: `${pct}%` } : { width: 0 }}
-        transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
-      />
-    </div>
-  );
-}
 
 const allSkills = [
   ...skills.languages, ...skills.embedded, ...skills.iot,
@@ -84,21 +73,29 @@ export default function SkillsSection() {
             <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 32, color: "rgba(0,229,255,0.8)", textAlign: "center", textTransform: "uppercase", letterSpacing: "0.1em" }}>
               Core Competencies
             </h3>
-            <div style={{ 
-              display: "grid", 
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", 
-              gap: 40 
-            }} className="core-skills-grid">
-              {topSkills.map((s) => (
-                <div key={s.name}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-                    <span style={{ fontSize: 15, color: "#E6E8EB", fontWeight: 500 }}>{s.name}</span>
-                    <span style={{ fontSize: 13, fontFamily: "'JetBrains Mono', monospace", color: "#00E5FF" }}>
-                      {s.pct}%
-                    </span>
-                  </div>
-                  <ProgressBar pct={s.pct} inView={inView} />
-                </div>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
+              {coreSkills.map((s, i) => (
+                <motion.div
+                  key={s}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.2 + i * 0.05 }}
+                  className="hover:-translate-y-1 transition-transform duration-300"
+                  style={{
+                    padding: "10px 20px",
+                    borderRadius: 9999,
+                    background: "rgba(0,229,255,0.08)",
+                    border: "1px solid rgba(0,229,255,0.2)",
+                    color: "#00E5FF",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    boxShadow: "0 0 20px rgba(0,229,255,0.05)",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    cursor: "default"
+                  }}
+                >
+                  {s}
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -211,7 +208,6 @@ export default function SkillsSection() {
             grid-template-columns: 1fr !important;
           }
           .core-skills-grid {
-            grid-template-columns: 1fr !important;
             gap: 24px !important;
           }
         }

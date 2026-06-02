@@ -22,7 +22,7 @@ const contacts = [
     icon: <Github size={18} />,
     label: "GitHub",
     value: "AhmadADefatra",
-    href: "https://github.com/AhmadADefatra",
+    href: "https://github.com/aahmdakml",
     id: "contact-github",
   },
   {
@@ -101,12 +101,12 @@ export default function ContactSection() {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    padding: "20px 24px",
                     borderRadius: 16,
                     background: "#222229",
                     border: "1px solid rgba(230,232,235,0.07)",
                     transition: "border-color 250ms ease, box-shadow 250ms ease",
                     textDecoration: "none",
+                    minWidth: 0,
                   }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLElement;
@@ -118,13 +118,14 @@ export default function ContactSection() {
                     el.style.borderColor = "rgba(230,232,235,0.07)";
                     el.style.boxShadow = "none";
                   }}
+                  className="contact-card-item"
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                     <div
                       style={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: 12,
+                        width: 36,
+                        height: 36,
+                        borderRadius: 10,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -138,6 +139,7 @@ export default function ContactSection() {
                     </div>
                     <ArrowUpRight
                       size={16}
+                      className="hidden sm:block"
                       style={{ color: "rgba(230,232,235,0.2)", marginLeft: "auto" }}
                     />
                   </div>
@@ -293,13 +295,29 @@ export default function ContactSection() {
 
       {/* Responsive */}
       <style>{`
+        .contact-card-item {
+          padding: 24px;
+        }
         @media (max-width: 820px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
           .contact-cards-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .contact-card-item {
+            padding: 16px;
+          }
+        }
+        @media (max-width: 480px) {
+          .contact-cards-grid {
             grid-template-columns: 1fr !important;
+            gap: 8px !important;
+          }
+          .contact-card-item {
+            padding: 12px 16px;
           }
         }
       `}</style>

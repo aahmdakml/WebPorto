@@ -37,6 +37,7 @@ export default function Navbar() {
     <>
       {/* ── Full-Width Sticky Navbar ── */}
       <motion.header
+        className="nav-header"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
@@ -55,6 +56,7 @@ export default function Navbar() {
         }}
       >
         <div
+          className="nav-container"
           style={{
             maxWidth: 1280,
             margin: "0 auto",
@@ -91,11 +93,9 @@ export default function Navbar() {
           {/* Center Nav Links */}
           <nav
             style={{
-              display: "flex",
-              alignItems: "center",
               gap: 8,
             }}
-            className="hidden md:flex"
+            className="hidden md:flex items-center"
           >
             {links.map(({ label, href }) => (
               <button
@@ -124,10 +124,8 @@ export default function Navbar() {
           <button
             id="nav-contact-cta"
             onClick={() => scrollTo("#contact")}
-            className="hidden md:flex"
+            className="hidden md:inline-flex items-center"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
               gap: 8,
               padding: "10px 24px",
               borderRadius: 9999,
@@ -163,7 +161,34 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* ── Mobile menu ── */}
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-header {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            pointer-events: none;
+          }
+          .nav-container {
+            justify-content: flex-end !important;
+          }
+          #nav-logo {
+            display: none !important;
+          }
+          #nav-mobile-toggle {
+            pointer-events: auto;
+            background: rgba(28, 28, 33, 0.85) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+            padding: 10px !important;
+          }
+        }
+      `}</style>
+
+      {/* ── Mobile menu Dropdown ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -174,13 +199,14 @@ export default function Navbar() {
             style={{
               position: "fixed",
               top: 74,
-              left: 0,
-              right: 0,
+              left: 24,
+              right: 24,
               zIndex: 40,
               background: "rgba(28, 28, 33, 0.95)",
               backdropFilter: "blur(24px)",
-              borderBottom: "1px solid rgba(230,232,235,0.08)",
-              padding: 24,
+              border: "1px solid rgba(230,232,235,0.08)",
+              borderRadius: 16,
+              padding: 20,
               display: "flex",
               flexDirection: "column",
               gap: 8,

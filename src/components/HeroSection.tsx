@@ -34,31 +34,33 @@ export default function HeroSection() {
       />
 
       <div className="wrap w-full pt-28 lg:pt-32 pb-12 lg:pb-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* ── LEFT: Content ── */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+            className="flex flex-col text-center lg:text-left items-center lg:items-start"
           >
             {/* Availability badge */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full"
+              className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full mx-auto lg:mx-0"
               style={{
                 background: "rgba(0,229,255,0.07)",
                 border: "1px solid rgba(0,229,255,0.18)",
+                display: "inline-flex"
               }}
             >
               <span className="pulse-glow w-2 h-2 rounded-full" style={{ background: "#00E5FF" }} />
               <span className="label" style={{ color: "#00E5FF" }}>
                 Available for opportunities
               </span>
-              <MapPin size={11} style={{ color: "rgba(0,229,255,0.6)" }} />
-              <span className="label" style={{ color: "rgba(0,229,255,0.6)" }}>Indonesia</span>
+              <MapPin size={11} style={{ color: "rgba(0,229,255,0.6)", display: "none" }} className="sm:block" />
+              <span className="label hidden sm:inline" style={{ color: "rgba(0,229,255,0.6)" }}>Indonesia</span>
             </motion.div>
 
             {/* Name */}
@@ -66,7 +68,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="display-xl mb-2"
+              className="display-xl mb-2 text-center lg:text-left"
             >
               {profile.name.split(" ").slice(0, 2).join(" ")}
             </motion.h1>
@@ -74,7 +76,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.28, duration: 0.6 }}
-              className="display-xl grad-cyan-uv mb-6"
+              className="display-xl grad-cyan-uv mb-6 text-center lg:text-left"
             >
               {profile.name.split(" ").slice(2).join(" ")}
             </motion.div>
@@ -84,7 +86,7 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="flex items-center gap-2 mb-6"
+              className="flex items-center justify-center lg:justify-start gap-2 mb-6"
             >
               <span style={{ color: "rgba(0,229,255,0.5)", fontFamily: "'JetBrains Mono', monospace", fontSize: 15 }}>
                 &gt;
@@ -107,7 +109,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="body-lg mb-8 max-w-lg"
+              className="body-lg max-w-lg mx-auto lg:mx-0 text-center lg:text-left hero-bio"
             >
               {profile.bio}
             </motion.p>
@@ -117,23 +119,17 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 24,
-                marginBottom: 36,
-                marginTop: 24
-              }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 hero-ctas"
             >
               <button
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="btn btn-primary"
+                className="btn btn-primary w-full sm:w-auto justify-center"
                 id="hero-view-projects"
               >
                 <Sparkles size={15} />
                 View Projects
               </button>
-              <a href={profile.cv} download id="hero-download-cv" className="btn btn-ghost">
+              <a href={profile.cv} download id="hero-download-cv" className="btn btn-ghost w-full sm:w-auto justify-center">
                 Download CV
               </a>
             </motion.div>
@@ -143,16 +139,12 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: 16,
-              }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6"
             >
+              <div className="flex items-center gap-4">
               {[
                 { icon: <Linkedin size={16} />, href: profile.linkedin, id: "hero-linkedin" },
-                { icon: <Github size={16} />, href: "https://github.com/AhmadADefatra", id: "hero-github" },
+                { icon: <Github size={16} />, href: "https://github.com/aahmdakml", id: "hero-github" },
                 { icon: <Mail size={16} />, href: `mailto:${profile.email}`, id: "hero-email-icon" },
               ].map((s) => (
                 <a
@@ -181,7 +173,8 @@ export default function HeroSection() {
                   {s.icon}
                 </a>
               ))}
-              <span className="body-sm ml-1">{profile.email}</span>
+              </div>
+              <span className="body-sm">{profile.email}</span>
             </motion.div>
           </motion.div>
 
@@ -211,7 +204,7 @@ export default function HeroSection() {
 
               {/* Photo container */}
               <div
-                className="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden flex items-center justify-center"
+                className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden flex items-center justify-center"
                 style={{
                   background: "linear-gradient(135deg, rgba(45,0,107,0.4) 0%, rgba(0,229,255,0.06) 100%)",
                   border: "2px dashed rgba(0,229,255,0.25)",
@@ -280,6 +273,14 @@ export default function HeroSection() {
         <span style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.1em" }}>scroll</span>
         <ArrowDown size={14} className="pulse-glow" />
       </motion.div>
+      <style>{`
+        .hero-bio { margin-bottom: 48px; }
+        .hero-ctas { margin-bottom: 56px; }
+        @media (max-width: 768px) {
+          .hero-bio { margin-bottom: 40px; }
+          .hero-ctas { margin-bottom: 64px; }
+        }
+      `}</style>
     </section>
   );
 }

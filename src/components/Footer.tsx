@@ -8,15 +8,16 @@ export default function Footer() {
       style={{ borderTop: "1px solid rgba(230,232,235,0.06)", background: "#1C1C21" }}
     >
       <div className="wrap flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", color: "rgba(230,232,235,0.25)" }}>
+        <p className="text-center sm:text-left" style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", color: "rgba(230,232,235,0.25)" }}>
           © {new Date().getFullYear()}{" "}
           <span style={{ color: "rgba(230,232,235,0.5)", fontWeight: 600 }}>Ahmad Akmal Defatra</span>
-          {" "}· React + Vite + Tailwind
+          <br className="sm:hidden" />
+          <span className="hidden sm:inline"> · </span>React + Vite + Tailwind
         </p>
         <div className="flex items-center gap-3">
           {[
             { icon: <Linkedin size={15} />, href: profile.linkedin, label: "LinkedIn" },
-            { icon: <Github size={15} />, href: "https://github.com/AhmadADefatra", label: "GitHub" },
+            { icon: <Github size={15} />, href: "https://github.com/aahmdakml", label: "GitHub" },
             { icon: <Mail size={15} />, href: `mailto:${profile.email}`, label: "Email" },
           ].map((s) => (
             <a

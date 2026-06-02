@@ -41,24 +41,27 @@ export default function ExperienceSection() {
           alignItems: "start",
         }} className="experience-grid">
           {/* ── Sidebar list ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -16 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.15 }}
-            style={{ display: "flex", flexDirection: "column", gap: 8 }}
-          >
-            {experience.map((e, i) => (
-              <button
-                key={e.role}
-                id={`exp-tab-${i}`}
-                className={`exp-tab ${selected === i ? "active" : ""}`}
-                onClick={() => setSelected(i)}
-              >
-                <p className="exp-tab-title">{e.role}</p>
-                <p className="exp-tab-sub">{e.company}</p>
-              </button>
-            ))}
-          </motion.div>
+          <div className="experience-tabs-wrapper">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={inView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.15 }}
+              className="experience-tabs-container"
+              style={{ display: "flex", gap: 8 }}
+            >
+              {experience.map((e, i) => (
+                <button
+                  key={e.role}
+                  id={`exp-tab-${i}`}
+                  className={`exp-tab ${selected === i ? "active" : ""}`}
+                  onClick={() => setSelected(i)}
+                >
+                  <p className="exp-tab-title">{e.role}</p>
+                  <p className="exp-tab-sub">{e.company}</p>
+                </button>
+              ))}
+            </motion.div>
+          </div>
 
           {/* ── Detail panel ── */}
           <AnimatePresence mode="wait">
@@ -67,11 +70,12 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4 }}
-              className="card"
-              style={{ padding: 40, minHeight: 320 }}
+              className="card expanded-exp-card"
+              style={{ minHeight: 320, maxWidth: "100%", overflow: "hidden", wordBreak: "break-word" }}
             >
               {/* Header */}
               <div
+                className="expanded-exp-header"
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
@@ -79,7 +83,6 @@ export default function ExperienceSection() {
                   alignItems: "flex-start",
                   gap: 16,
                   marginBottom: 24,
-                  padding: 24,
                   borderRadius: 16,
                   background: "linear-gradient(135deg, rgba(0,229,255,0.08) 0%, rgba(0,229,255,0.02) 100%)",
                   border: "1px solid rgba(0,229,255,0.15)",
@@ -140,12 +143,11 @@ export default function ExperienceSection() {
                       display: "flex",
                       alignItems: "flex-start",
                       gap: 16,
-                      padding: 20,
-                      borderRadius: 12,
                       background: "rgba(255,255,255,0.03)",
                       border: "1px solid rgba(255,255,255,0.03)",
                       transition: "all 300ms ease",
                     }}
+                    className="exp-bullet"
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
                       (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,229,255,0.15)";
@@ -188,11 +190,55 @@ export default function ExperienceSection() {
 
       {/* Responsive override for mobile: stack sidebar above detail */}
       <style>{`
+        .expanded-exp-card { padding: 40px; }
+        .expanded-exp-header { padding: 24px; }
+        .exp-bullet { padding: 20px; gap: 16px; border-radius: 12px; }
+        .experience-tabs-container {
+          flex-direction: column;
+        }
+
         @media (max-width: 1023px) {
           .experience-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: minmax(0, 1fr) !important;
             gap: 24px !important;
           }
+          .experience-tabs-container {
+            flex-direction: row;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+          }
+          .experience-tabs-container::-webkit-scrollbar {
+            display: none;
+          }
+          .experience-tabs-wrapper {
+            position: relative;
+            margin: 0 -24px;
+            width: auto;
+          }
+          .experience-tabs-container {
+            padding: 0 48px 8px 24px !important;
+          }
+          .experience-tabs-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 48px;
+            background: linear-gradient(to right, transparent, var(--obs));
+            pointer-events: none;
+          }
+          .exp-tab {
+            width: auto !important;
+            min-width: 220px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .expanded-exp-card { padding: 16px; }
+          .expanded-exp-header { padding: 16px; }
+          .exp-bullet { padding: 12px; gap: 12px; }
         }
       `}</style>
     </section>

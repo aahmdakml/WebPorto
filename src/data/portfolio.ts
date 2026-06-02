@@ -1,8 +1,8 @@
 // CV Data – Ahmad Akmal Defatra
 
 export const stats = [
-  { value: "8+", label: "Projects" },
-  { value: "3", label: "Internships" },
+  { value: "10+", label: "Projects" },
+  { value: "2", label: "Internships" },
   { value: "5", label: "Awards" },
 ];
 
@@ -26,18 +26,18 @@ export const education = [
   {
     institution: "Institut Teknologi Sepuluh Nopember (ITS)",
     degree: "Bachelor of Computer Engineering",
-    period: "2022 – Present",
+    period: "2023 – Present",
     location: "Surabaya, ID",
     gpa: "3.44 / 4.00",
     description:
       "Focusing on embedded systems, telematics, and software engineering. I actively serve as a Practicum Assistant at the M-IOT Lab and participate in various research projects that combine AI with hardware.",
   },
   {
-    institution: "SMA Negeri 1 Cerme",
+    institution: "SMA PU Al Bayan",
     degree: "Science / MIPA",
-    period: "2019 – 2022",
-    location: "Gresik, ID",
-    gpa: "-",
+    period: "2020 – 2023",
+    location: "Sukabumi, ID",
+    gpa: "92/100",
     description:
       "Graduated with a strong foundation in Mathematics and Natural Sciences, which helped shape my logical thinking and algorithmic problem-solving skills.",
   },
@@ -201,20 +201,20 @@ export const experience = [
   },
   {
     company: "BEM FTEIC",
-    role: "Pemandu (Leadership Facilitator)",
+    role: "Pemandu (Management Facilitator)",
     period: "Oct 2024 – Dec 2025",
     location: "Surabaya, ID",
     color: "emerald",
     icon: "🗣️",
     description: [
-      "I facilitated leadership and strategic thinking sessions for engineering students, creating an environment that encouraged interactive discussion rather than passive listening.",
-      "My goal was to help students strengthen their teamwork and leadership capacity through structured 'discussion-like' presentations.",
+      "I facilitated management and strategic thinking sessions for engineering students, creating an environment that encouraged interactive discussion rather than passive listening.",
+      "My goal was to help students strengthen their teamwork and management capacity through structured 'discussion-like' presentations.",
     ],
     highlights: [
-      "Conducted 5+ leadership sessions, guiding over 30 participants per session",
+      "Conducted 5+ management sessions, guiding over 30 participants per session",
       "Designed interactive discussion formats to foster strategic thinking and teamwork",
     ],
-    tech: ["Public Speaking", "Facilitation", "Leadership"],
+    tech: ["Public Speaking", "Facilitation", "Management"],
   },
 ];
 
